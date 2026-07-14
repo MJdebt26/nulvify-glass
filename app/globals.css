@@ -1,0 +1,22 @@
+/* Minimal reset + base. All visual styling lives in glass-theme.ts (scoped
+   to .gs-root). This file just normalizes the document and sets the base font
+   from the CSS variables wired up in layout.tsx. */
+
+*, *::before, *::after { box-sizing: border-box; }
+* { margin: 0; }
+
+html { -webkit-text-size-adjust: 100%; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+
+body {
+  min-height: 100vh;
+  background: #EDE4D2;               /* warm cream — matches .gs-root */
+  color: #1C1A16;
+  font-family: var(--font-geist-sans), system-ui, -apple-system, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+a { color: inherit; text-decoration: none; }
+img, svg { display: block; max-width: 100%; }
+button, input, textarea, select { font: inherit; }

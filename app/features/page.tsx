@@ -1,0 +1,123 @@
+import Link from 'next/link'
+
+const BIG: { icon: React.ReactNode; eyebrow: string; title: string; body: string; points: string[] }[] = [
+  {
+    icon: <><path d="M3 3v18h18" /><path d="M7 14l4-4 3 3 5-6" /></>,
+    eyebrow: 'The forecast',
+    title: 'A debt-free date that holds up.',
+    body: 'Most calculators assume a perfect, unchanging paycheck. We run a thousand simulations across the ways real income actually moves, then give you the median month your balance clears — a date you can plan a life around.',
+    points: ['1,000 Monte-Carlo runs per plan', 'Median, not best-case', 'Updates as you log real payments'],
+  },
+  {
+    icon: <><circle cx="12" cy="12" r="9" /><path d="M12 7v5l3 2" /></>,
+    eyebrow: 'The strategy',
+    title: 'Avalanche or snowball, decided for you.',
+    body: 'We compare every ordering of your debts, weigh interest saved against momentum, and recommend the one that fits your numbers — then show you exactly how much the alternative would cost so the choice is yours.',
+    points: ['Side-by-side interest comparison', 'Momentum-aware ordering', 'Switch strategies anytime'],
+  },
+  {
+    icon: <><path d="M12 2v20" /><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" /></>,
+    eyebrow: 'The pulse',
+    title: 'See interest burning in real time.',
+    body: 'A live burn rate shows what your debt costs you per day. It is a quiet, motivating number — the kind that makes an unused subscription suddenly easy to cancel.',
+    points: ['Daily & yearly burn rate', 'Milestone nudges', 'Progress you can feel'],
+  },
+]
+
+const SMALL: [string, string][] = [
+  ['Variable income modeling', 'Gig weeks and slow months are part of the math, not an afterthought.'],
+  ['What-if scenarios', 'Drag a slider to see how an extra $50 reshapes your date.'],
+  ['Net-worth tracking', 'Watch the gap between what you owe and what you own close.'],
+  ['Accountability partner', 'Share milestones with someone who cheers you on.'],
+  ['Credit-health view', 'Understand how payoff order nudges your score.'],
+  ['Smart alerts', 'Quiet, useful nudges — never noise for its own sake.'],
+]
+
+export default function GlassFeatures() {
+  return (
+    <>
+      <section className="gs-hero">
+        <div className="gs-container">
+          <div className="gs-shead gs-shead--left" style={{ marginBottom: 0, maxWidth: 720 }}>
+            <span className="gs-eyebrow">Features</span>
+            <h1 className="gs-display" style={{ fontSize: 'clamp(38px, 5.4vw, 66px)' }}>
+              Everything you need to<br />believe the date.
+            </h1>
+            <p className="gs-lede" style={{ maxWidth: '52ch' }}>
+              Depth where it earns its keep, calm everywhere else. Here&rsquo;s what&rsquo;s under the glass.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* big alternating features */}
+      <section className="gs-section" style={{ paddingTop: 0 }}>
+        <div className="gs-container" style={{ display: 'flex', flexDirection: 'column', gap: 20 }}>
+          {BIG.map((f, i) => (
+            <div className="gs-card gs-glass gs-glass--hover" key={f.title} style={{ padding: 'clamp(28px, 4vw, 44px)' }}>
+              <div style={{ display: 'grid', gap: 'clamp(24px, 4vw, 48px)', gridTemplateColumns: '1fr', alignItems: 'center' }}
+                className={`gs-feat-row${i % 2 ? ' gs-feat-row--rev' : ''}`}>
+                <div>
+                  <span className="gs-eyebrow">{f.eyebrow}</span>
+                  <h2 className="gs-h2" style={{ margin: '14px 0 16px' }}>{f.title}</h2>
+                  <p className="gs-body" style={{ fontSize: 16 }}>{f.body}</p>
+                  <ul className="gs-price-list" style={{ margin: '22px 0 0' }}>
+                    {f.points.map(p => (
+                      <li key={p}>
+                        <svg className="gs-check" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"><path d="M20 6 9 17l-5-5" /></svg>
+                        {p}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+                <div style={{ display: 'flex', justifyContent: 'center' }}>
+                  <div className="gs-feature-icon" style={{ width: 120, height: 120, borderRadius: 28 }}>
+                    <svg width="52" height="52" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round">{f.icon}</svg>
+                  </div>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* small feature grid */}
+      <section className="gs-section" style={{ paddingTop: 0 }}>
+        <div className="gs-container">
+          <div className="gs-shead">
+            <span className="gs-eyebrow">And the details</span>
+            <h2 className="gs-h1">The small things, done right.</h2>
+          </div>
+          <div className="gs-grid gs-grid--3">
+            {SMALL.map(([t, b]) => (
+              <div className="gs-card gs-glass gs-glass--hover" key={t}>
+                <h3 className="gs-h3" style={{ fontSize: 17 }}>{t}</h3>
+                <p className="gs-body gs-body--sm" style={{ marginTop: 8 }}>{b}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="gs-section" style={{ paddingTop: 0 }}>
+        <div className="gs-container">
+          <div className="gs-cta-band gs-glass">
+            <span className="gs-eyebrow">Ready when you are</span>
+            <h2 className="gs-h1">Put your numbers in. See the date.</h2>
+            <div className="gs-hero-btns">
+              <Link href="/signup" className="gs-btn gs-btn--primary gs-btn--lg">Get started free</Link>
+              <Link href="/pricing" className="gs-btn gs-btn--glass gs-btn--lg">Compare plans</Link>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <style>{`
+        @media (min-width: 820px) {
+          .gs-feat-row { grid-template-columns: 1.3fr 0.7fr !important; }
+          .gs-feat-row--rev > div:first-child { order: 2; }
+        }
+      `}</style>
+    </>
+  )
+}
