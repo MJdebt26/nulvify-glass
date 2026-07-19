@@ -6,19 +6,19 @@ const COLS: { title: string; links: [string, string][] }[] = [
   { title: 'Legal', links: [['Privacy', '/'], ['Terms', '/'], ['Security', '/']] },
 ]
 
-export default function GlassFooter() {
+export default function LiquidFooter() {
   return (
-    <footer className="gs-footer">
-      <div className="gs-footer-inner gs-glass">
-        <div className="gs-footer-grid">
-          <div className="gs-footer-col gs-footer-brand">
-            <Link href="/" className="gs-wordmark">Nulvify<span className="gs-wordmark-dot">.</span></Link>
-            <p className="gs-body gs-body--sm">
+    <footer className="lg-footer">
+      <div className="lg-footer-inner lg-glass">
+        <div className="lg-footer-grid">
+          <div className="lg-footer-col lg-footer-brand">
+            <Link href="/" className="lg-wordmark">Nulvify<span className="lg-wordmark-dot">.</span></Link>
+            <p className="lg-body lg-body--sm">
               See the day you&rsquo;re debt-free, then walk toward it with a plan that adjusts as your life does.
             </p>
           </div>
           {COLS.map(col => (
-            <div className="gs-footer-col" key={col.title}>
+            <div className="lg-footer-col" key={col.title}>
               <h4>{col.title}</h4>
               {col.links.map(([label, href]) => (
                 <Link key={label} href={href}>{label}</Link>
@@ -27,7 +27,7 @@ export default function GlassFooter() {
           ))}
         </div>
       </div>
-      <div className="gs-footer-bottom">
+      <div className="lg-footer-bottom">
         <span>&copy; 2026 Nulvify. A glass-UI exploration.</span>
         <span>Made calm, on purpose.</span>
       </div>

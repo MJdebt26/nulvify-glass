@@ -39,14 +39,29 @@ npm start
 ## How it’s built
 
 - **Next.js (App Router) + React + TypeScript.** No Tailwind, no UI kit.
-- **One design system** in [`app/glass-theme.ts`](app/glass-theme.ts), scoped to
-  `.gs-root`. Each glass surface is three layers — a frosted body
-  (`backdrop-filter` blur + saturate), a slow diagonal shimmer, and a luminous
-  hairline + inner glow — floating on a soft diffused shadow, with a subtle
-  hover “breathe.” Soft ambient orbs sit behind the page so the glass has light
-  to refract.
+- **One design system** in [`app/liquid-theme.ts`](app/liquid-theme.ts), scoped to
+  `.lg-root`. The glass is **tiered**:
+  - **Hero showcase card** — real optical **edge-lensing refraction** (an SVG
+    `feDisplacementMap` fed a displacement map generated to the card’s size) plus
+    **3-pass chromatic aberration**, a **3D tilt**, and a specular highlight that
+    both follow the cursor.
+  - **Nav / CTA / featured / auth surfaces** — organic ripple refraction.
+  - **The many small cards** — a cheap, high-quality blur + specular rim + grain
+    (never refract dozens of panels — that’s the #1 performance trap).
+- Every surface has a single **implied light source** (bright top-left rim → faint
+  oxblood corner), a **cursor-follow highlight**, low tint + high saturation (so it
+  *lenses* rather than muddy-frosts), and a **drifting oxblood/sage/gold color
+  field behind it** so the glass has real light to bend.
+- **Browser reality:** real SVG refraction in `backdrop-filter` runs in **Chromium
+  only** (a known WebKit/Firefox gap). The engine is detected at runtime; Safari and
+  Firefox get a rich blur fallback. The material also honors
+  `prefers-reduced-transparency`, `prefers-contrast`, and `prefers-reduced-motion`,
+  degrading to solid panels.
 - **Fonts:** Fraunces (display), Geist Sans (UI), Geist Mono (labels).
 - **Palette:** warm cream base, oxblood accent. Calm on purpose — no neon.
+
+> Tip: the refraction, chromatic edges, and tilt are most alive when you move the
+> pointer over the hero card — static screenshots undersell it.
 
 ## Deploy
 

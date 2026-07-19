@@ -36,14 +36,14 @@ const SMALL: [string, string][] = [
 export default function GlassFeatures() {
   return (
     <>
-      <section className="gs-hero">
-        <div className="gs-container">
-          <div className="gs-shead gs-shead--left" style={{ marginBottom: 0, maxWidth: 720 }}>
-            <span className="gs-eyebrow">Features</span>
-            <h1 className="gs-display" style={{ fontSize: 'clamp(38px, 5.4vw, 66px)' }}>
+      <section className="lg-hero">
+        <div className="lg-container">
+          <div className="lg-shead lg-shead--left" style={{ marginBottom: 0, maxWidth: 720 }}>
+            <span className="lg-eyebrow">Features</span>
+            <h1 className="lg-display" style={{ fontSize: 'clamp(38px, 5.4vw, 66px)' }}>
               Everything you need to<br />believe the date.
             </h1>
-            <p className="gs-lede" style={{ maxWidth: '52ch' }}>
+            <p className="lg-lede" style={{ maxWidth: '52ch' }}>
               Depth where it earns its keep, calm everywhere else. Here&rsquo;s what&rsquo;s under the glass.
             </p>
           </div>
@@ -51,27 +51,27 @@ export default function GlassFeatures() {
       </section>
 
       {/* big alternating features */}
-      <section className="gs-section" style={{ paddingTop: 0 }}>
-        <div className="gs-container" style={{ display: 'flex', flexDirection: 'column', gap: 20 }}>
+      <section className="lg-section" style={{ paddingTop: 0 }}>
+        <div className="lg-container" style={{ display: 'flex', flexDirection: 'column', gap: 20 }}>
           {BIG.map((f, i) => (
-            <div className="gs-card gs-glass gs-glass--hover" key={f.title} style={{ padding: 'clamp(28px, 4vw, 44px)' }}>
+            <div className="lg-card lg-glass lg-glass--hover" key={f.title} style={{ padding: 'clamp(28px, 4vw, 44px)' }}>
               <div style={{ display: 'grid', gap: 'clamp(24px, 4vw, 48px)', gridTemplateColumns: '1fr', alignItems: 'center' }}
-                className={`gs-feat-row${i % 2 ? ' gs-feat-row--rev' : ''}`}>
+                className={`lg-feat-row${i % 2 ? ' lg-feat-row--rev' : ''}`}>
                 <div>
-                  <span className="gs-eyebrow">{f.eyebrow}</span>
-                  <h2 className="gs-h2" style={{ margin: '14px 0 16px' }}>{f.title}</h2>
-                  <p className="gs-body" style={{ fontSize: 16 }}>{f.body}</p>
-                  <ul className="gs-price-list" style={{ margin: '22px 0 0' }}>
+                  <span className="lg-eyebrow">{f.eyebrow}</span>
+                  <h2 className="lg-h2" style={{ margin: '14px 0 16px' }}>{f.title}</h2>
+                  <p className="lg-body" style={{ fontSize: 16 }}>{f.body}</p>
+                  <ul className="lg-price-list" style={{ margin: '22px 0 0' }}>
                     {f.points.map(p => (
                       <li key={p}>
-                        <svg className="gs-check" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"><path d="M20 6 9 17l-5-5" /></svg>
+                        <svg className="lg-check" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"><path d="M20 6 9 17l-5-5" /></svg>
                         {p}
                       </li>
                     ))}
                   </ul>
                 </div>
                 <div style={{ display: 'flex', justifyContent: 'center' }}>
-                  <div className="gs-feature-icon" style={{ width: 120, height: 120, borderRadius: 28 }}>
+                  <div className="lg-feature-icon" style={{ width: 120, height: 120, borderRadius: 28 }}>
                     <svg width="52" height="52" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round">{f.icon}</svg>
                   </div>
                 </div>
@@ -82,31 +82,31 @@ export default function GlassFeatures() {
       </section>
 
       {/* small feature grid */}
-      <section className="gs-section" style={{ paddingTop: 0 }}>
-        <div className="gs-container">
-          <div className="gs-shead">
-            <span className="gs-eyebrow">And the details</span>
-            <h2 className="gs-h1">The small things, done right.</h2>
+      <section className="lg-section" style={{ paddingTop: 0 }}>
+        <div className="lg-container">
+          <div className="lg-shead">
+            <span className="lg-eyebrow">And the details</span>
+            <h2 className="lg-h1">The small things, done right.</h2>
           </div>
-          <div className="gs-grid gs-grid--3">
+          <div className="lg-grid lg-grid--3">
             {SMALL.map(([t, b]) => (
-              <div className="gs-card gs-glass gs-glass--hover" key={t}>
-                <h3 className="gs-h3" style={{ fontSize: 17 }}>{t}</h3>
-                <p className="gs-body gs-body--sm" style={{ marginTop: 8 }}>{b}</p>
+              <div className="lg-card lg-glass lg-glass--hover" key={t}>
+                <h3 className="lg-h3" style={{ fontSize: 17 }}>{t}</h3>
+                <p className="lg-body lg-body--sm" style={{ marginTop: 8 }}>{b}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      <section className="gs-section" style={{ paddingTop: 0 }}>
-        <div className="gs-container">
-          <div className="gs-cta-band gs-glass">
-            <span className="gs-eyebrow">Ready when you are</span>
-            <h2 className="gs-h1">Put your numbers in. See the date.</h2>
-            <div className="gs-hero-btns">
-              <Link href="/signup" className="gs-btn gs-btn--primary gs-btn--lg">Get started free</Link>
-              <Link href="/pricing" className="gs-btn gs-btn--glass gs-btn--lg">Compare plans</Link>
+      <section className="lg-section" style={{ paddingTop: 0 }}>
+        <div className="lg-container">
+          <div className="lg-cta-band lg-glass lg-glass--refract">
+            <span className="lg-eyebrow">Ready when you are</span>
+            <h2 className="lg-h1">Put your numbers in. See the date.</h2>
+            <div className="lg-hero-btns">
+              <Link href="/signup" className="lg-btn lg-btn--primary lg-btn--lg">Get started free</Link>
+              <Link href="/pricing" className="lg-btn lg-btn--glass lg-btn--lg">Compare plans</Link>
             </div>
           </div>
         </div>
@@ -114,8 +114,8 @@ export default function GlassFeatures() {
 
       <style>{`
         @media (min-width: 820px) {
-          .gs-feat-row { grid-template-columns: 1.3fr 0.7fr !important; }
-          .gs-feat-row--rev > div:first-child { order: 2; }
+          .lg-feat-row { grid-template-columns: 1.3fr 0.7fr !important; }
+          .lg-feat-row--rev > div:first-child { order: 2; }
         }
       `}</style>
     </>
