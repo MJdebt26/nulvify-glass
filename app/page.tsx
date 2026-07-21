@@ -1,4 +1,6 @@
 import Link from 'next/link'
+import LiveInterest from './_components/LiveInterest'
+import Instrument from './_components/Instrument'
 
 const FEATURES: { icon: React.ReactNode; title: string; body: string }[] = [
   {
@@ -93,6 +95,12 @@ export default function GlassHome() {
           </div>
         </div>
       </section>
+
+      {/* ── QUIET INTEREST TICKER (the original debt clock, hidden) ───────── */}
+      <LiveInterest />
+
+      {/* ── THE INSTRUMENT (live front-end model of the forecaster) ───────── */}
+      <Instrument />
 
       {/* ── FEATURES ──────────────────────────────────────────────────────── */}
       <section className="lg-section">

@@ -346,6 +346,42 @@ export const LIQUID_CSS = `
 
 .lg-note { text-align: center; font-size: 12px; color: var(--lg-muted); padding: 0 24px 24px; position: relative; z-index: 2; }
 
+/* ══ INTEREST TICKER — the original's debt clock, made quiet ══════════════ */
+.lg-tick-wrap { display: flex; justify-content: center; padding: 4px 24px 0; }
+.lg-tick { display: inline-flex; align-items: center; gap: 10px; padding: 10px 18px; border-radius: 999px; flex-wrap: wrap; justify-content: center; }
+.lg-tick-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--lg-accent); box-shadow: 0 0 8px rgba(154,59,44,0.7); animation: lg-pulse 2s ease-in-out infinite; flex: none; }
+@keyframes lg-pulse { 0%,100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.3; transform: scale(0.8); } }
+.lg-tick-label { font-size: 12px; color: var(--lg-muted); letter-spacing: 0.01em; }
+.lg-tick-num { font-family: var(--font-geist-mono, ui-monospace), monospace; font-size: 13px; font-weight: 600; color: var(--lg-ink-soft); font-variant-numeric: tabular-nums; }
+
+/* ══ THE INSTRUMENT — interactive front-end model of the forecaster ════════ */
+.lg-inst-grid { display: grid; grid-template-columns: 1fr; gap: 28px; }
+@media (min-width: 820px) { .lg-inst-grid { grid-template-columns: 0.9fr 1.1fr; align-items: center; } }
+.lg-inst-controls { display: flex; flex-direction: column; gap: 24px; }
+.lg-ctrl-head { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 12px; gap: 12px; }
+.lg-ctrl-name { font-family: var(--font-geist-mono, ui-monospace), monospace; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--lg-muted); }
+.lg-ctrl-val { font-family: var(--font-fraunces, Georgia), serif; font-size: 22px; font-weight: 600; color: var(--lg-ink); font-variant-numeric: tabular-nums; }
+.lg-range { -webkit-appearance: none; appearance: none; width: 100%; height: 6px; border-radius: 999px; outline: none; cursor: pointer;
+  background: linear-gradient(90deg, var(--lg-accent) 0%, var(--lg-accent) var(--fill,50%), rgba(120,105,80,0.22) var(--fill,50%), rgba(120,105,80,0.22) 100%); }
+.lg-range::-webkit-slider-thumb { -webkit-appearance: none; width: 22px; height: 22px; border-radius: 50%; background: var(--lg-accent); border: 3px solid #F6F0E2; box-shadow: 0 2px 8px rgba(154,59,44,0.5); cursor: pointer; transition: transform .15s ease; }
+.lg-range::-webkit-slider-thumb:hover { transform: scale(1.12); }
+.lg-range::-moz-range-thumb { width: 20px; height: 20px; border-radius: 50%; background: var(--lg-accent); border: 3px solid #F6F0E2; box-shadow: 0 2px 8px rgba(154,59,44,0.5); cursor: pointer; }
+.lg-inst-readout { text-align: left; }
+.lg-inst-eyebrow { font-family: var(--font-geist-mono, ui-monospace), monospace; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--lg-muted); }
+.lg-inst-date { font-family: var(--font-fraunces, Georgia), serif; font-size: clamp(32px, 4.6vw, 52px); font-weight: 600; color: var(--lg-ink); letter-spacing: -0.02em; line-height: 1.02; margin: 8px 0 4px; }
+.lg-inst-metrics { display: flex; gap: 26px; margin-top: 18px; flex-wrap: wrap; }
+.lg-inst-metric .v { font-family: var(--font-fraunces, Georgia), serif; font-size: 21px; font-weight: 600; color: var(--lg-ink); font-variant-numeric: tabular-nums; }
+.lg-inst-metric .v.accent { color: var(--lg-accent); }
+.lg-inst-metric .k { font-family: var(--font-geist-mono, ui-monospace), monospace; font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--lg-muted); margin-top: 4px; }
+.lg-fan { width: 100%; height: auto; display: block; margin-top: 22px; overflow: visible; }
+.lg-fan-sim { fill: none; stroke: var(--lg-accent); opacity: 0.10; stroke-width: 1; }
+.lg-fan-fill { fill: rgba(154,59,44,0.07); }
+.lg-fan-median { fill: none; stroke: var(--lg-accent); stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; transition: d .35s ease; }
+.lg-fan-axis { stroke: rgba(120,105,80,0.25); stroke-width: 1; }
+.lg-fan-zero { fill: var(--lg-accent); }
+.lg-fan-zlabel { font-family: var(--font-geist-mono, ui-monospace), monospace; font-size: 10px; fill: var(--lg-accent); font-weight: 600; }
+@media (prefers-reduced-motion: reduce) { .lg-tick-dot { animation: none; } }
+
 /* ══ ACCESSIBILITY FALLBACKS — glass → solid where the OS asks ═════════════ */
 @media (prefers-reduced-motion: reduce) {
   .lg-orb, .lg-prog-fill { animation: none; }
